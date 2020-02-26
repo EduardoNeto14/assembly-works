@@ -1,20 +1,12 @@
-;
-; AssemblerApplication1.asm
-;
-; Created: 02/03/2017 08:14:39
-; Author : DEE
-;
-
-	
 	.include<m128def.inc>
 
-	.equ	sw6 = 5				// ConfiguraÁ„o do Switch 6
-// 	.equ	sw5 = 4				ConfiguraÁ„o do Switch 5
-	.equ	sw4 = 3				// ConfiguraÁ„o do Switch 4
-	.equ	sw3 = 2				// ConfiguraÁ„o do Switch 3
-	.equ	sw2 = 1				// ConfiguraÁ„o do Switch 2
-	.equ	sw1 = 0				// ConfiguraÁ„o do Switch 1
-	.def	temp=R16			// DefiniÁ„o da vari·vel temp
+	.equ	sw6 = 5				// Configura√ß√£o do Switch 6
+// 	.equ	sw5 = 4				Configura√ß√£o do Switch 5
+	.equ	sw4 = 3				// Configura√ß√£o do Switch 4
+	.equ	sw3 = 2				// Configura√ß√£o do Switch 3
+	.equ	sw2 = 1				// Configura√ß√£o do Switch 2
+	.equ	sw1 = 0				// Configura√ß√£o do Switch 1
+	.def	temp=R16			// Defini√ß√£o da vari√°vel temp
 
 
 /*	Outra maneira de configurar os LED's, um a um.
@@ -28,8 +20,8 @@
 	.equ	D7=0b10111111
 	.equ	D8=0b01111111	*/
 
-	.cseg						// Indica o inÌcio do cÛdigo
-	.org	0x46				// Indica o endereÁo de memÛria em que comeÁa o cÛdigo
+	.cseg						// Indica o in√≠cio do c√≥digo
+	.org	0x46				// Indica o endere√ßo de mem√≥ria em que come√ßa o c√≥digo
 
 
 /********************************************************************************************
@@ -37,24 +29,24 @@
 ********************************************************************************************/
 
 Funcionamento1:
-	ser		temp				// Coloca a vari·vel temp sÛ com 1's
-	out		PORTC,	temp		// Escreve na saÌda
-	out		DDRC,	temp		// Configura como saÌda
-	clr		temp				// Coloca a vari·vel temp sÛ com 0's
+	ser		temp				// Coloca a vari√°vel temp s√≥ com 1's
+	out		PORTC,	temp		// Escreve na sa√≠da
+	out		DDRC,	temp		// Configura como sa√≠da
+	clr		temp				// Coloca a vari√°vel temp s√≥ com 0's
 	out		DDRA,	temp		// Configura como entradas
 
-/***************************			ConfiguraÁ„o dos Botıes			********************/
+/***************************			Configura√ß√£o dos Bot√µes			********************/
 
 SWI1:
-	sbic	PINA,	sw1			// Se pressionar o bot„o sw1...
+	sbic	PINA,	sw1			// Se pressionar o bot√£o sw1...
 	jmp		SWI2
 	ldi		temp,	0b01111110	// ... salta para aqui
-	out		PORTC,	temp		// Escreve na saÌda a vari·vel temp
+	out		PORTC,	temp		// Escreve na sa√≠da a vari√°vel temp
 
 SWI2:
 	sbic	PINA,	sw2		
-	jmp		SWI3				// Se n„o for pressionado o bot„o sw2, passar· para o prÛximo ciclo
-	ldi		temp,	0b01100110	// LÍ imediatamente para a vari·vel temp a configuraÁ„o dos LED's
+	jmp		SWI3				// Se n√£o for pressionado o bot√£o sw2, passar√° para o pr√≥ximo ciclo
+	ldi		temp,	0b01100110	// L√™ imediatamente para a vari√°vel temp a configura√ß√£o dos LED's
 	out		PORTC,	temp
 
 SWI3:
