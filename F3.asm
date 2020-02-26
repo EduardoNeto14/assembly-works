@@ -1,5 +1,3 @@
-; Replace with your application code
-	
 	.include<m128def.inc>	
 
 	.equ	sw1=0
